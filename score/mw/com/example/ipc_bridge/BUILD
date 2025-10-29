@@ -13,6 +13,8 @@
 load("@rules_rust//rust:defs.bzl", "rust_binary", "rust_library")
 load("@score-baselibs//score/language/safecpp:toolchain_features.bzl", "COMPILER_WARNING_FEATURES")
 
+exports_files(["etc/mw_com_config.json"])
+
 cc_binary(
     name = "ipc_bridge_cpp",
     srcs = [
@@ -22,6 +24,7 @@ cc_binary(
     ],
     data = ["etc/mw_com_config.json"],
     features = COMPILER_WARNING_FEATURES,
+    visibility = ["//visibility:public"],
     deps = [
         ":sample_sender_receiver",
         "//score/mw/com",
@@ -78,6 +81,7 @@ rust_binary(
     data = ["etc/mw_com_config.json"],
     features = ["link_std_cpp_lib"],
     rustc_flags = ["-Clink-arg=-lstdc++"],
+    visibility = ["//visibility:public"],
     deps = [
         ":ipc_bridge_gen_rs",
         "//score/mw/com/impl/rust:mw_com",
