@@ -25,6 +25,11 @@ git_override(
 bazel_dep(name = "multi_gcc_toolchain", version = "1.0.0")
 
 autosd_9_gcc = use_extension("@multi_gcc_toolchain//autosd_9_gcc:extensions.bzl", "autosd_9_gcc_extension")
+autosd_9_gcc.configure(
+    c_flags = ["-Wall", "-Wno-error=deprecated-declarations", "-Werror", "-fPIC"],
+    cxx_flags = ["-Wall", "-Wno-error=deprecated-declarations", "-Werror", "-fPIC"],
+)
+
 use_repo(autosd_9_gcc, "autosd_9_gcc_repo")
 register_toolchains("@autosd_9_gcc_repo//:gcc_toolchain_linux_x86_64")
 

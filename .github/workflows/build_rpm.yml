@@ -42,7 +42,7 @@ jobs:
 
       - name: Build RPM packages
         run: |
-          bazel build //:lola_devel_rpm --copt=-fPIC
+          bazel build //:lola_devel_rpm
 
       - name: Copy artifacts to staging directory
         run: |
