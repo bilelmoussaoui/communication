@@ -26,8 +26,8 @@ bazel_dep(name = "multi_gcc_toolchain", version = "1.0.0")
 
 autosd_9_gcc = use_extension("@multi_gcc_toolchain//autosd_9_gcc:extensions.bzl", "autosd_9_gcc_extension")
 autosd_9_gcc.configure(
-    c_flags = ["-Wall", "-Wno-error=deprecated-declarations", "-Werror", "-fPIC"],
-    cxx_flags = ["-Wall", "-Wno-error=deprecated-declarations", "-Werror", "-fPIC"],
+    c_flags = ["-Wall", "-Wno-error=deprecated-declarations", "-Wno-error=maybe-uninitialized", "-Werror", "-fPIC"],
+    cxx_flags = ["-Wall", "-Wno-error=deprecated-declarations", "-Wno-error=maybe-uninitialized", "-Werror", "-fPIC"],
 )
 
 use_repo(autosd_9_gcc, "autosd_9_gcc_repo")
